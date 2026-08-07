@@ -7,3 +7,8 @@ def test_health():
     r = client.get('/api/v1/health')
     assert r.status_code == 200
     assert r.json() == {"status": "ok"}
+
+
+def test_ping_and_root():
+    assert client.get("/api/v1/ping").json() == {"ping": "pong"}
+    assert client.get("/").json()["message"].startswith("Language Practice Service")

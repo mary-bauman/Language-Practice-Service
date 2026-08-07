@@ -18,6 +18,6 @@ Configure alembic/env.py to import your models' metadata and set sqlalchemy.url,
     alembic upgrade head
 
 Tests
-pytest -q
+pytest --cov=app --cov-report=term-missing --cov-fail-under=90 -q
 
 See plan.md and impl-plan.md for roadmap and implementation details.

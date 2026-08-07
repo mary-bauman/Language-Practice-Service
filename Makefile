@@ -10,7 +10,7 @@ migrate:
 	@echo "Run migrations (not yet implemented): alembic upgrade head"
 
 test:
-	@pytest -q
+	@pytest --cov=app --cov-report=term-missing --cov-fail-under=90 -q
 
 lint:
 	@echo "Run linting (not configured)"
