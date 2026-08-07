@@ -9,6 +9,7 @@ Progress
 - Step 1 complete: Docker/FastAPI project scaffold and local health endpoint.
 - Step 2 complete: SQLModel schema, PostgreSQL migration, and database session setup.
 - Step 3 complete: custom JWT authentication, bcrypt password hashing, refresh-token rotation/revocation, password reset flow, and current-user dependency.
+- Step 4 complete: authenticated CRUD and pagination for words, phrases, and sentence templates with ownership isolation.
 
 Overview
 --------

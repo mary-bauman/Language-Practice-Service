@@ -5,8 +5,8 @@ Author: Mary (planning document created by Copilot plan agent)
 
 Implementation status
 ---------------------
-- Steps 1-3 complete: project scaffold, database schema/migrations, and custom JWT authentication.
-- Next: implement user-scoped CRUD for words, phrases, and sentence templates.
+- Steps 1-4 complete: project scaffold, database schema/migrations, custom JWT authentication, and user-scoped CRUD.
+- Next: implement atomic practice-event recording and scheduling updates.
 
 Purpose
 -------
