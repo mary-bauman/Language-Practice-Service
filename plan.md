@@ -7,7 +7,8 @@ Implementation status
 ---------------------
 - Steps 1-4 complete: project scaffold, database schema/migrations, custom JWT authentication, and user-scoped CRUD.
 - Step 5 complete: atomic practice-event recording, aggregate counters, scheduling updates, ownership checks, and row locking.
-- Next: implement scheduling recompute jobs and protected admin operations.
+- Step 6 complete: owner-scoped scheduling recomputation from immutable history with idempotent repair behavior.
+- Next: implement import/export and seed-data utilities.
 
 Purpose
 -------
