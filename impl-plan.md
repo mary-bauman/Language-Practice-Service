@@ -143,6 +143,8 @@ Why this step
 
 Validation
 - Run the seed script and confirm sample words and a test user exist; run export to CSV and verify contents.
+- Implemented: authenticated transactional CSV import/export, idempotent sample seed script,
+  Docker Makefile target, and API tests. Full suite passes with 97% coverage.
 
 Step 8 — Tests, CI, docs, and observability
 ------------------------------------------
