@@ -5,6 +5,8 @@ from datetime import datetime
 
 from sqlmodel import SQLModel, Field, Relationship
 from pydantic import EmailStr
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import JSONB
 
 
 class User(SQLModel, table=True):
@@ -34,7 +36,7 @@ class BaseItem(SQLModel):
     english: Optional[str] = None
     part_of_speech: Optional[str] = None
     source: Optional[str] = None
-    tags: Optional[dict] = None  # stored as JSONB
+    tags: Optional[dict] = Field(default=None, sa_column=Column(JSONB))
     total_practices: int = 0
     correct_count: int = 0
     last_practiced_at: Optional[datetime] = None
@@ -46,14 +48,14 @@ class BaseItem(SQLModel):
     last_reviewed_at: Optional[datetime] = None
 
 
-class Word(SQLModel, BaseItem, table=True):
+class Word(BaseItem, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     german: str = Field(index=True, nullable=False)
     owner_id: UUID = Field(foreign_key="user.id", nullable=False, index=True)
     owner: Optional[User] = Relationship(back_populates="words")
 
 
-class Phrase(SQLModel, BaseItem, table=True):
+class Phrase(BaseItem, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     german: str = Field(nullable=False)
     category: Optional[str] = None
@@ -61,7 +63,7 @@ class Phrase(SQLModel, BaseItem, table=True):
     owner: Optional[User] = Relationship(back_populates="phrases")
 
 
-class SentenceTemplate(SQLModel, BaseItem, table=True):
+class SentenceTemplate(BaseItem, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     template_text: str = Field(nullable=False)
     translation_hint: Optional[str] = None
@@ -77,4 +79,4 @@ class PracticeEvent(SQLModel, table=True):
     user_id: UUID = Field(foreign_key="user.id", nullable=False, index=True)
     attempted_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
     outcome: str = Field(nullable=False)  # 'correct'|'incorrect'|'skipped'
-    details: Optional[dict] = None  # JSON field
+    details: Optional[dict] = Field(default=None, sa_column=Column(JSONB))

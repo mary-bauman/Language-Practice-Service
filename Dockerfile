@@ -18,5 +18,6 @@ COPY ./alembic /app/alembic
 COPY alembic.ini /app/alembic.ini
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
