@@ -4,6 +4,12 @@ Goal
 ----
 Implement the backend described in plan.md (FastAPI + PostgreSQL, multi-user, custom JWT + bcrypt auth, hybrid spaced-repetition model) so the service supports users, words/phrases/templates, practice events, scheduling fields, secure auth, and a recompute path for scheduling migration/repair.
 
+Progress
+--------
+- Step 1 complete: Docker/FastAPI project scaffold and local health endpoint.
+- Step 2 complete: SQLModel schema, PostgreSQL migration, and database session setup.
+- Step 3 complete: custom JWT authentication, bcrypt password hashing, refresh-token rotation/revocation, password reset flow, and current-user dependency.
+
 Overview
 --------
 This document breaks the work into 8 concrete, verifiable steps. Each step includes sub-tasks, expected file artifacts, and how to validate the work locally.

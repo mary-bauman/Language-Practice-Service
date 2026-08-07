@@ -3,6 +3,11 @@
 Date: 2026-08-07
 Author: Mary (planning document created by Copilot plan agent)
 
+Implementation status
+---------------------
+- Steps 1-3 complete: project scaffold, database schema/migrations, and custom JWT authentication.
+- Next: implement user-scoped CRUD for words, phrases, and sentence templates.
+
 Purpose
 -------
 This document describes the plan for a backend service to store German vocabulary and phrase practice data. The service's goals:

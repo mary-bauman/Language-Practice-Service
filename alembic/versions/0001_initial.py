@@ -23,6 +23,8 @@ def upgrade():
         sa.Column('username', sa.String(), nullable=False, unique=True),
         sa.Column('email', sa.String(), nullable=True, unique=True),
         sa.Column('password_hash', sa.String(), nullable=False),
+        sa.Column('reset_token_hash', sa.String(), nullable=True),
+        sa.Column('reset_token_expires_at', sa.TIMESTAMP(), nullable=True),
         sa.Column('created_at', sa.TIMESTAMP(), nullable=False),
         sa.Column('updated_at', sa.TIMESTAMP(), nullable=False),
     )

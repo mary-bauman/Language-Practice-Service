@@ -1,9 +1,9 @@
 from __future__ import annotations
-from typing import Optional, List
+from typing import Optional
 from uuid import UUID, uuid4
 from datetime import datetime
 
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import SQLModel, Field
 from pydantic import EmailStr
 from sqlalchemy import Column
 from sqlalchemy.dialects.postgresql import JSONB
@@ -14,13 +14,10 @@ class User(SQLModel, table=True):
     username: str = Field(index=True, nullable=False, unique=True)
     email: Optional[EmailStr] = Field(default=None, index=True, unique=True)
     password_hash: str
+    reset_token_hash: Optional[str] = None
+    reset_token_expires_at: Optional[datetime] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
-
-    words: List["Word"] = Relationship(back_populates="owner")
-    phrases: List["Phrase"] = Relationship(back_populates="owner")
-    templates: List["SentenceTemplate"] = Relationship(back_populates="owner")
-
 
 class RefreshToken(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
@@ -52,7 +49,6 @@ class Word(BaseItem, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     german: str = Field(index=True, nullable=False)
     owner_id: UUID = Field(foreign_key="user.id", nullable=False, index=True)
-    owner: Optional[User] = Relationship(back_populates="words")
 
 
 class Phrase(BaseItem, table=True):
@@ -60,7 +56,6 @@ class Phrase(BaseItem, table=True):
     german: str = Field(nullable=False)
     category: Optional[str] = None
     owner_id: UUID = Field(foreign_key="user.id", nullable=False, index=True)
-    owner: Optional[User] = Relationship(back_populates="phrases")
 
 
 class SentenceTemplate(BaseItem, table=True):
@@ -69,7 +64,6 @@ class SentenceTemplate(BaseItem, table=True):
     translation_hint: Optional[str] = None
     examples_count: int = 0
     owner_id: UUID = Field(foreign_key="user.id", nullable=False, index=True)
-    owner: Optional[User] = Relationship(back_populates="templates")
 
 
 class PracticeEvent(SQLModel, table=True):
