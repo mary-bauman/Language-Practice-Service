@@ -6,7 +6,8 @@ Author: Mary (planning document created by Copilot plan agent)
 Implementation status
 ---------------------
 - Steps 1-4 complete: project scaffold, database schema/migrations, custom JWT authentication, and user-scoped CRUD.
-- Next: implement atomic practice-event recording and scheduling updates.
+- Step 5 complete: atomic practice-event recording, aggregate counters, scheduling updates, ownership checks, and row locking.
+- Next: implement scheduling recompute jobs and protected admin operations.
 
 Purpose
 -------

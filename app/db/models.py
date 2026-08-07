@@ -80,6 +80,9 @@ class SentenceTemplate(SQLModel, table=True):
     examples_count: int = 0
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+    total_practices: int = 0
+    correct_count: int = 0
+    last_practiced_at: Optional[datetime] = None
     interval_seconds: Optional[int] = None
     repetitions: int = 0
     ease_factor: float = 2.5

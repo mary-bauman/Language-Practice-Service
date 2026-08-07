@@ -10,6 +10,7 @@ Progress
 - Step 2 complete: SQLModel schema, PostgreSQL migration, and database session setup.
 - Step 3 complete: custom JWT authentication, bcrypt password hashing, refresh-token rotation/revocation, password reset flow, and current-user dependency.
 - Step 4 complete: authenticated CRUD and pagination for words, phrases, and sentence templates with ownership isolation.
+- Step 5 complete: atomic practice events, SM-2-style scheduling updates, ownership validation, row locking, and concurrency tests.
 
 Overview
 --------
