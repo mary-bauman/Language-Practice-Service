@@ -1,10 +1,12 @@
-"""add password reset fields
+"""Record password reset fields already included in the initial schema.
 
 Revision ID: 0002_auth_reset_tokens
 Revises: 0001_initial
+
+The reset-token columns were included in ``0001_initial``. This revision is
+kept in the migration chain for databases that already reference it, but
+must not attempt to add or remove those columns a second time.
 """
-from alembic import op
-import sqlalchemy as sa
 
 revision = "0002_auth_reset_tokens"
 down_revision = "0001_initial"
@@ -13,13 +15,8 @@ depends_on = None
 
 
 def upgrade():
-    op.add_column("user", sa.Column("reset_token_hash", sa.String(), nullable=True))
-    op.add_column(
-        "user",
-        sa.Column("reset_token_expires_at", sa.TIMESTAMP(), nullable=True),
-    )
+    pass
 
 
 def downgrade():
-    op.drop_column("user", "reset_token_expires_at")
-    op.drop_column("user", "reset_token_hash")
+    pass
