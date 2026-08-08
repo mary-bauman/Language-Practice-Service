@@ -2,8 +2,9 @@ from datetime import datetime, timedelta
 from uuid import uuid4
 from unittest.mock import patch
 
+import pytest
 from fastapi.testclient import TestClient
-from jose import jwt
+from jose import JWTError, jwt
 from sqlmodel import select
 
 from app.auth.security import (
@@ -172,9 +173,5 @@ def test_invalid_access_token_claims_are_rejected():
         settings.secret_key,
         algorithm=settings.jwt_algorithm,
     )
-    try:
+    with pytest.raises(JWTError, match="invalid access token"):
         decode_access_token(token)
-    except Exception:
-        pass
-    else:
-        raise AssertionError("refresh token claim was accepted as an access token")
