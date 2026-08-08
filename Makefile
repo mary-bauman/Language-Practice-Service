@@ -16,4 +16,4 @@ test:
 	@pytest --cov=app --cov-report=term-missing --cov-fail-under=90 -q
 
 lint:
-	@echo "Run linting (not configured)"
+	@ruff check --select E9,F63,F7,F82 app tests

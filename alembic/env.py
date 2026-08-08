@@ -1,12 +1,14 @@
 # Alembic env configured to use SQLModel metadata for autogenerate
 from logging.config import fileConfig
 import os
+from dotenv import load_dotenv
 
 from alembic import context
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+load_dotenv()
 
 # Interpret the config file for Python logging when logging sections exist.
 if config.config_file_name:
@@ -16,8 +18,9 @@ if config.config_file_name:
         pass
 
 database_url = os.getenv("DATABASE_URL")
-if database_url:
-    config.set_main_option("sqlalchemy.url", database_url)
+if not database_url:
+    raise RuntimeError("DATABASE_URL must be set before running Alembic migrations")
+config.set_main_option("sqlalchemy.url", database_url)
 
 # Import SQLModel metadata
 import sys

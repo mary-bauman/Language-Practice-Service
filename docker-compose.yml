@@ -23,6 +23,8 @@ services:
       - db
     env_file:
       - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-language_practice}
 
 volumes:
   pgdata:

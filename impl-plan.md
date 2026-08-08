@@ -12,6 +12,8 @@ Progress
 - Step 4 complete: authenticated CRUD and pagination for words, phrases, and sentence templates with ownership isolation.
 - Step 5 complete: atomic practice events, SM-2-style scheduling updates, ownership validation, row locking, and concurrency tests.
 - Step 6 complete: authenticated owner-scoped scheduler recompute endpoint and idempotent history replay service.
+- Step 8 complete: CI workflow, developer documentation, request IDs, structured request logs,
+  Prometheus-compatible request metrics, and observability tests.
 
 Overview
 --------
