@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # copy app
 COPY ./app /app/app
+COPY ./scripts /app/scripts
 COPY ./alembic /app/alembic
 COPY alembic.ini /app/alembic.ini
 

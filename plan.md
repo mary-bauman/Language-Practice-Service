@@ -9,7 +9,7 @@ Implementation status
 - Step 5 complete: atomic practice-event recording, aggregate counters, scheduling updates, ownership checks, and row locking.
 - Step 6 complete: owner-scoped scheduling recomputation from immutable history with idempotent repair behavior.
 - Step 7 complete: authenticated transactional CSV import/export and idempotent seed-data CLI.
-- Next: Step 8 CI, documentation, and observability polish.
+- Step 8 complete: CI, documentation, and observability are implemented and validated.
 
 Purpose
 -------
